@@ -1,0 +1,8 @@
+version: 2
+models:
+  - name: stg_emissions_by_country
+    description: Flattened data of CO2 emissions by country from psa.emissions_by_country
+  - name: stg_temperatures_by_country
+    description: Flattened data of temperatures by country from psa.temperatures_by_country
+  - name: stg_global_temperatures
+    description: Flattened data of global temperatures from psa.global_temperatures

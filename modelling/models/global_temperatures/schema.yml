@@ -1,0 +1,8 @@
+version: 2
+models:
+  - name: aggregate_country_temperatures
+    description: aggregates average temperatures by country and year
+  - name: aggregate_global_emissions_temperatures
+    description: aggregates global greenhouse gas emissions and average temperatures by year
+  - name: aggregate_global_temperatures
+    description: aggregates global average temperatures by year

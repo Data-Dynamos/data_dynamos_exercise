@@ -1,0 +1,6 @@
+version: 2
+models:
+  - name: co2_emissions_by_country
+    description: CO2 Emission by different Country
+  - name: aggregate_global_emissions
+    description: Yearly global total emission 

@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: psa
+    tables:
+      - name: emissionsbycountry
+      - name: globaltemperatures
+      - name: temperaturesbycountry
