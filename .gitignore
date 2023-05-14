@@ -8,3 +8,4 @@ data-ingestion/
 workshop/
 mdx.ipynb
 .DS_Store
+snowflake-app/.streamlit/secrets.toml
