@@ -2,5 +2,11 @@ version: 2
 models:
   - name: co2_emissions_by_country
     description: CO2 Emission by different Country
+  - name: co2_emissions_and_temperatures_by_country
+    description:  CO2 Emission and average temperature for different Country 
   - name: aggregate_global_emissions
     description: Yearly global total emission 
+  - name: aggregate_country_emissions_temperatures
+    description:  Yearly global total emission  and average temperature for different Country
+  - name: europe_big_three_emissions
+    description: Yearly global total emission for Europe's big three

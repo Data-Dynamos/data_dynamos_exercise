@@ -5,13 +5,18 @@
     )
 }}
 
-SELECT
-  CAST("Year" AS INTEGER) AS Year,
-  ENTITY AS Country,
-  CAST(NULLIF(Annual_CO2_emissions, '') AS FLOAT) AS TotalEmissions,
-  CAST(NULLIF(Per_capita_CO2_emissions, '') AS FLOAT) AS PerCapitaEmissions,
-  CAST(NULLIF(Share_of_global_CO2_emissions, '') AS FLOAT) AS ShareOfGlobalEmissions
-FROM {{ ref('stg_emissions_by_country') }}
+
+{# Create Table for Country Emissions
+To create a table called co2_emissions_by_country in the carbon_emissions schema, you will use the data from the STG_EMISSIONS_BY_COUNTRY view to analyze and populate the table.
+
+Your output table should contain:
+Year: integer
+Country: string
+TotalEmissions: float
+PerCapitaEmissions: float
+ShareOfGlobalEmissions: float 
+
+#}
 
 
 
