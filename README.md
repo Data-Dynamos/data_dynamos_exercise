@@ -1,15 +1,45 @@
-Welcome to your new dbt project!
+# exercise_co2_vs_temperature
 
-### Using the starter project
+## Setup
 
-Try running the following commands:
-- dbt run
-- dbt test
+### Pyenv
 
+- Install pyenv
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+```shell
+export PYENV_GIT_TAG=v2.3.22
+curl https://pyenv.run | bash
+```
+
+- Load pyenv automatically by adding following lines to your shell configuration `~/.zshrc` or `~/.bashrc`
+
+```shell
+# Load pyenv automatically
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
+
+If you are using shells other than bash or zsh refer: https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
+
+### Python 3.8.16
+
+```shell
+pyenv --version
+pyenv install 3.8.16
+pyenv versions # should list Python 3.8.16 version
+```
+
+## Usage
+
+```shell
+# setup virtualenv and install the dependencies
+poetry install
+
+# run a command inside the virtualenv
+poetry run dbt --version
+
+# start a virtualenv shell and run commands inside it
+poetry shell
+dbt --version
+```
