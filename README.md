@@ -53,16 +53,18 @@ poetry shell
 dbt --version
 
 # install dbt packages
+cd data_transformations
 dbt deps
 ```
 
 ### Configure Credentials and Connect to Snowflake
 
 ```shell
-export SNOWFLAKE_ACCOUNT='ni10825.ap-south-1.aws'
+export SNOWFLAKE_ACCOUNT='<your-snowflake-account-name>'
 export SNOWFLAKE_DATABASE='<your-database-name>'
 export SNOWFLAKE_USER='<your-user-name>'
 export SNOWFLAKE_PASSWORD='<your-password>'
 
+cd data_transformations
 dbt debug # should connect successfully
 ```
