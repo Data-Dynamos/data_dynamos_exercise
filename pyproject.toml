@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "exercise_co2_vs_temperature"
+name = "data_dynamos_exercise"
 version = "0.1.0"
 description = ""
 authors = []

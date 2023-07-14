@@ -1,4 +1,4 @@
-exercise_co2_vs_temperature:
+data_transformations:
   outputs:
     dev:
       account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"

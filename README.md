@@ -1,4 +1,4 @@
-# exercise_co2_vs_temperature
+# data_dynamos_exercise
 
 ## Prerequisites
 
