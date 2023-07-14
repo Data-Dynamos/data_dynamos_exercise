@@ -1,4 +1,4 @@
-exercise_co2_vs_temperature_dbt:
+exercise_co2_vs_temperature:
   outputs:
     dev:
       account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
