@@ -1,4 +1,3 @@
-
 target/
 dbt_packages/
 logs/
@@ -9,4 +8,10 @@ workshop/
 mdx.ipynb
 .DS_Store
 snowflake-app/.streamlit/secrets.toml
+.user.yml
+
+# IDE
 .idea
+
+# Environment variables
+.envrc
