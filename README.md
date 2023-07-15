@@ -37,6 +37,19 @@ pyenv versions # should list Python 3.8.16 version
 curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.5.1 python3 -
 ```
 
+### Add Poetry bin directory to PATH 
+
+#### For Zsh:
+
+```
+echo 'export PATH="$HOME/.local/bin/:$PATH"' >> ~/.zshrc
+```
+#### For bash:
+
+```
+echo 'export PATH="$HOME/.local/bin/:$PATH"' >> ~/.bashrc
+```
+
 ## Usage
 
 ### Create virtualenv and Install Dependencies
