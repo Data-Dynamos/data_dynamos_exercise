@@ -12,16 +12,27 @@
 curl https://pyenv.run | PYENV_GIT_TAG=v2.3.22 bash
 ```
 
-- Load pyenv automatically by adding following lines to your shell configuration `~/.zshrc` or `~/.bashrc`
+#### Load pyenv automatically
+
+##### For bash
 
 ```shell
-# Load pyenv automatically
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+source ~/.bashrc
 ```
 
-If you are using shells other than bash or zsh refer: https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
+##### For Zsh
+
+```shell
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+If you are using shells other than bash or Zsh refer: https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
 
 ### Install Python 3.8.16
 
@@ -37,17 +48,20 @@ pyenv versions # should list Python 3.8.16 version
 curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.5.1 python3 -
 ```
 
-### Add Poetry bin directory to PATH 
+#### Add Poetry bin directory to PATH 
 
-#### For Zsh:
+##### For bash:
 
-```
-echo 'export PATH="$HOME/.local/bin/:$PATH"' >> ~/.zshrc
-```
-#### For bash:
-
-```
+```shell
 echo 'export PATH="$HOME/.local/bin/:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+##### For Zsh:
+
+```shell
+echo 'export PATH="$HOME/.local/bin/:$PATH"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
 ## Usage
