@@ -20,7 +20,7 @@ curl https://pyenv.run | PYENV_GIT_TAG=v2.3.22 bash
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-source ~/.bashrc
+exec "$SHELL"
 ```
 
 ##### For Zsh
@@ -29,7 +29,7 @@ source ~/.bashrc
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-source ~/.zshrc
+exec "$SHELL"
 ```
 
 If you are using shells other than bash or Zsh refer: https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
@@ -54,14 +54,14 @@ curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.5.1 python3 -
 
 ```shell
 echo 'export PATH="$HOME/.local/bin/:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+exec "$SHELL"
 ```
 
 ##### For Zsh:
 
 ```shell
 echo 'export PATH="$HOME/.local/bin/:$PATH"' >> ~/.zshrc
-source ~/.zshrc
+exec "$SHELL"
 ```
 
 ## Usage
@@ -80,7 +80,7 @@ poetry shell
 dbt --version
 
 # install dbt packages
-cd data_transformations
+cd data_transformation
 dbt deps
 ```
 
@@ -94,7 +94,7 @@ export SNOWFLAKE_DATABASE='<your-database-name>'
 export SNOWFLAKE_USER='<your-user-name>'
 export SNOWFLAKE_PASSWORD='<your-password>'
 
-cd data_transformations
+cd data_transformation
 dbt debug # should connect successfully
 ```
 
