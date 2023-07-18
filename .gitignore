@@ -1,17 +1,17 @@
 target/
 dbt_packages/
 logs/
+.user.yml
 .talismanrc
 .conda/
-data-ingestion/
-workshop/
 mdx.ipynb
 .DS_Store
-snowflake-app/.streamlit/secrets.toml
-.user.yml
+secrets.toml
 
 # IDE
 .idea
 
 # Environment variables
 .envrc
+.env
+*.env

@@ -1,0 +1,19 @@
+**/*/target/
+**/*/dbt_packages/
+**/*/logs/
+**/*/.user.yml
+**/*/secrets.toml
+.talismanrc
+.conda/
+data-ingestion/
+workshop/
+mdx.ipynb
+.DS_Store
+
+# IDE
+.idea
+
+# Environment variables
+.envrc
+.env
+*.env
