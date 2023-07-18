@@ -5,16 +5,15 @@
     )
 }}
 
-{# 
-Create Table for Country Emissions and Average Temperatures
-To create a table called co2_emissions_and_temperatures_by_country in the carbon_emissions schema,
-you will use the data from the co2_emissions_by_country and aggregate_country_temperatures to analyze and populate the table.
-
-Your output table should contain:
-Year: integer
-Country: string
-TotalEmissions: float
-PerCapitaEmissions: float
-ShareOfGlobalEmissions: float 
-AverageTemperature: float
-#}
+SELECT
+  coalesce(INITCAP(em.Country), '')||'||'||em.Year||'||'|| coalesce(temp.AverageTemperature,0) as Country_AvgTemp_BKey,
+  em.Year,
+  INITCAP(em.Country) as Country,
+  em.TotalEmissions,
+  em.PerCapitaEmissions,
+  em.ShareOfGlobalEmissions,
+  temp.AverageTemperature
+FROM
+  {{ ref('co2_emissions_by_country') }} em 
+  INNER JOIN {{ ref('aggregate_country_temperatures') }} temp
+    ON  INITCAP(em.Country) = INITCAP(temp.Country) AND em.Year = temp.year

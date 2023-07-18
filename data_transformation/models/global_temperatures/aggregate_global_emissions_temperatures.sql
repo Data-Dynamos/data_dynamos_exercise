@@ -5,18 +5,13 @@
     )
 }}
 
-{# 
-To analyze the relationship between global emissions and temperatures, you will perform an INNER JOIN between the results of two views: aggregate_global_emissions and aggregate_global_temperatures. This join will combine the data from both views based on the common "Year" column.
+select
+ em.Year,
+ em.TotalEmissions,
+ temp.LandAverageTemperature,
+ temp.LandMaxTemperature,
+ temp.LandMinTemperature,
+ temp.LandAndOceanAverageTemperature
+from {{ ref('aggregate_global_emissions') }} em inner join  {{ ref('aggregate_global_temperatures') }}  temp on
+em.Year = temp.Year
 
-To create a table called aggregate_global_emissions_temperatures with the desired columns in the global_temperatures schema:
-
-Perform an INNER JOIN between the aggregate_global_emissions and aggregate_global_temperatures views on the "Year" column.
-Select the following columns from the joined data:
-Year: Integer
-TotalEmissions: Float
-LandAverageTemperature: Float
-LandMaxTemperature: Float
-LandMinTemperature: Float
-LandAndOceanAverageTemperature: Float
-Your output table, aggregate_global_emissions_temperatures , should have the above schema.
- #}

@@ -5,20 +5,12 @@
     )
 }}
 
-{# Create View for Aggregate Global Temperatures
-To analyze temperature measurements globally on an annual basis, you will create a view called aggregate_global_temperatures based on the stg_global_temperatures table in the global_temperatures schema . This view will group the data by year and provide aggregated temperature values using the appropriate aggregation functions.
+SELECT 
+    SUBSTR("Date", 1, 4)::INTEGER AS Year,
+    AVG(NULLIF(LandAverageTemperature, '')::float) AS LandAverageTemperature,
+    MAX(NULLIF(LandMaxTemperature, '')::float) AS LandMaxTemperature,
+    MIN(NULLIF(LandMinTemperature, '')::float) AS LandMinTemperature,
+    AVG(NULLIF(LandAndOceanAverageTemperature, '')::float) AS LandAndOceanAverageTemperature
+FROM {{ source ('psa' , 'stg_global_temperatures')}}
+GROUP BY Year
 
-To create the view and extract the desired columns:
-
-Select the Date, LandAverageTemperature, LandMaxTemperature, LandMinTemperature, and LandAndOceanAverageTemperature columns from the stg_global_temperatures table.
-Extract the year from the Date column to obtain only the year portion of the date.
-Apply the suitable aggregation functions, such as AVG for average temperature, to calculate the desired values for each year.
-Ignore any 'Uncertainty' columns for this project.
-The resulting view should have the following columns:
-
-Year: Integer
-LandAverageTemperature: Float
-LandMaxTemperature: Float
-LandMinTemperature: Float
-LandAndOceanAverageTemperature: Float
- #}
