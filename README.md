@@ -116,7 +116,7 @@ export SNOWFLAKE_USER='<your-user-name>'
 export SNOWFLAKE_PASSWORD='<your-password>'
 
 cd data_visualization
-streamlit run app.py # should be able to access the UI
+streamlit run DataDynamos.py # should be able to access the UI
 ```
 
 ## Setup Using Docker
@@ -166,5 +166,5 @@ export SNOWFLAKE_USER='<your-user-name>'
 export SNOWFLAKE_PASSWORD='<your-password>'
 
 cd data_visualization
-streamlit run app.py # should be able to access the UI
+streamlit run DataDynamos.py # should be able to access the UI
 ```
