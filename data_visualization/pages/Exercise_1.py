@@ -9,17 +9,7 @@ from st_aggrid.shared import JsCode
 from snowflake.snowpark import Session
 import plotly.express as px
 import pandas as pd
-
-@st.cache_resource
-def create_session():
-    return Session.builder.configs({"account": os.environ["SNOWFLAKE_ACCOUNT"],
-                                    "database": os.environ["SNOWFLAKE_DATABASE"],
-                                    "user": os.environ["SNOWFLAKE_USER"],
-                                    "password": os.environ["SNOWFLAKE_PASSWORD"],
-                                    "role": "DEVELOPER",
-                                    "warehouse": "COMPUTE_WH",
-                                    "schema": "PSA",
-                                    "client_session_keep_alive": True}).create()
+from utils.session import snowflake_session
 
 
 def display_bar_chart(data_frame, x, y, title, xaxis_title, yaxis_title, width, height,color=
@@ -40,16 +30,16 @@ if __name__ == '__main__':
         initial_sidebar_state="expanded",
     )
 
-    st.title("Total Emissions and Average Temperature 🚀 ")
-    session = create_session()
+
+    session = snowflake_session()
+    st.subheader('Exercise 1')
+    st.title("Total Emissions and Average Temperature for different Countries 🧭")
 
     emission_temp = "EXERCISE_CO2_VS_TEMPERATURE.CARBON_EMISSIONS.AGGREGATE_COUNTRY_EMISSIONS_TEMPERATURES"
     query = f"SELECT COUNTRY, YEAR, PERCAPITAEMISSIONS, SHAREOFGLOBALEMISSIONS, TOTALEMISSIONS, AVERAGETEMPERATURE FROM {emission_temp}"
     emission_temperature = session._run_query(query)
     emission_temperature = pd.DataFrame(emission_temperature, columns=['COUNTRY', 'YEAR', 'PERCAPITAEMISSIONS', 'SHAREOFGLOBALEMISSIONS', 'TOTALEMISSIONS', 'AVERAGETEMPERATURE'])
 
-
-    st.title("Total Emissions and Average Temperature for different Countries 🧭")
     year_options = emission_temperature['YEAR'].unique()
     selected_year = st.selectbox('Select a year', year_options)
     selected_countries = st.multiselect('Select countries', emission_temperature['COUNTRY'].unique(), key='country A')
