@@ -23,34 +23,38 @@ session = snowflake_session()
 # TODO: Fetch data from the AGGREGATE_COUNTRY_EMISSIONS_TEMPERATURES table
 # Add code here to retrieve the necessary data from the AGGREGATE_COUNTRY_EMISSIONS_TEMPERATURES table using a SQL query
 # and assign it to the 'emission_temp' variable
+try:
+    query = f""  # Will hold the SQL query to fetch data from the database like select statement from
+    # EXERCISE_CO2_VS_TEMPERATURE.CARBON_EMISSIONS.AGGREGATE_COUNTRY_EMISSIONS_TEMPERATURES table
+    emission_temperature = session._run_query(query)
 
-query = f""  # Will hold the SQL query to fetch data from the database like select statement from
-# EXERCISE_CO2_VS_TEMPERATURE.CARBON_EMISSIONS.AGGREGATE_COUNTRY_EMISSIONS_TEMPERATURES table
-emission_temperature = session._run_query(query)
+    # TODO: Convert the retrieved data into a DataFrame
+    # Add code here to convert the fetched data into a DataFrame, using pandas or other appropriate methods
 
-# TODO: Convert the retrieved data into a DataFrame
-# Add code here to convert the fetched data into a DataFrame, using pandas or other appropriate methods
+    emission_temperature = pd.DataFrame(emission_temperature, columns=['None'])
 
-emission_temperature = pd.DataFrame(emission_temperature, columns=['None'])
+    # TODO
+    # Create selectbox to choose the Year
+    # Hint To aviod duplicates in your selectbox using unique function in the your dataframe and assign it to the year_options variable
+    # Fill year_options
+    year_options = None
+    selected_year = st.selectbox('Select a year', year_options)
 
-# TODO
-# Create selectbox to choose the Year
-# Hint To aviod duplicates in your selectbox using unique function in the your dataframe and assign it to the year_options variable
-# Fill year_options
-year_options = None
-selected_year = st.selectbox('Select a year', year_options)
+    # TODO Create multi selectbox to choose the Country
+    # Hint To aviod duplicates in your selectbox using unique function in the your dataframe and assign it to thecountry_options  variable
+    # Fill country_options
+    country_options = None
+    selected_countries = st.multiselect('Select countries', country_options, key='country A')
 
-# TODO Create multi selectbox to choose the Year
-# Hint To aviod duplicates in your selectbox using unique function in the your dataframe and assign it to thecountry_options  variable
-# Fill country_options
-country_options = None
-selected_countries = st.multiselect('Select countries', country_options, key='country A')
+    # TODO
+    # Filter out the countries only from country_options and year_options from the data frame emission_temperature
+    filtered_data_bar = emission_temperature[None]
 
-# TODO
-# Filter out the countries only from country_options and year_options from the data frame emission_temperature
-filtered_data_bar = emission_temperature[None]
-
-# TODO Define X and Y Parameters for plotting the bar chart
-display_bar_chart(filtered_data_bar, x='', y='',
-                  title='',
-                  xaxis_title='', yaxis_title='', width=800, height=600, color='#ff0000')
+    # TODO Define X and Y Parameters for plotting the bar chart
+    display_bar_chart(filtered_data_bar, x='', y='',
+                    title='',
+                    xaxis_title='', yaxis_title='', width=800, height=600, color='#ff0000')
+except Exception as e:
+    st.error("Please Fill missing code 🪄")  
+    with st.expander("Error Info ⚠️"):
+        st.error("Error: {}".format(str(e)))
