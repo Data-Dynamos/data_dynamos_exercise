@@ -89,6 +89,38 @@ select * from EXERCISE_CO2_VS_TEMPERATURE.PSA.STG_TEMPERATURES_BY_COUNTRY
 
 {% endif %}
 
+{%- if execute -%}
+{% set privileges_query  = 'GRANT ALL PRIVILEGES ON DATABASE '~database~' TO ROLE DEV'%}
+{% do run_query(privileges_query)  %}
+{% set psa_privileges_query  = 'GRANT ALL PRIVILEGES ON SCHEMA PSA TO ROLE DEV'%}
+{% do run_query(psa_privileges_query)  %}
+
+{% set psa_privileges_table_query  = 'GRANT SELECT ON ALL TABLES IN SCHEMA PSA TO ROLE DEV; 
+                                      GRANT SELECT ON FUTURE TABLES IN SCHEMA PSA TO ROLE DEV; 
+                                      GRANT SELECT ON ALL VIEWS IN SCHEMA PSA TO ROLE DEV;
+                                      GRANT SELECT ON FUTURE VIEWS IN SCHEMA PSA TO ROLE DEV;'%}
+{% do run_query(psa_privileges_table_query)  %}
+
+{% set carbon_emissions_privileges_query  = 'GRANT ALL PRIVILEGES ON SCHEMA CARBON_EMISSIONS TO ROLE DEV'%}
+{% do run_query(carbon_emissions_privileges_query)  %}
+
+{% set carbon_emissions_privileges_table_query  = 'GRANT SELECT ON ALL TABLES IN SCHEMA  CARBON_EMISSIONS TO ROLE DEV; 
+                                                    GRANT SELECT ON FUTURE TABLES IN SCHEMA CARBON_EMISSIONS TO ROLE DEV; 
+                                                    GRANT SELECT ON ALL VIEWS IN SCHEMA CARBON_EMISSIONS TO ROLE DEV;
+                                                    GRANT SELECT ON FUTURE VIEWS IN SCHEMA CARBON_EMISSIONs TO ROLE DEV;'%}
+{% do run_query(carbon_emissions_privileges_table_query)  %}
+
+{% set global_temperatures_privileges_query  = 'GRANT ALL PRIVILEGES ON SCHEMA GLOBAL_TEMPERATURES TO ROLE DEV'%}
+{% do run_query(global_temperatures_privileges_query)  %}
+
+{% set global_temperatures_privileges_table_query  = 'GRANT SELECT ON ALL TABLES IN SCHEMA GLOBAL_TEMPERATURES TO ROLE DEV; 
+                                                    GRANT SELECT ON FUTURE TABLES IN SCHEMA GLOBAL_TEMPERATURES TO ROLE DEV; 
+                                                    GRANT SELECT ON ALL VIEWS IN SCHEMA GLOBAL_TEMPERATURES TO ROLE DEV;
+                                                    GRANT SELECT ON FUTURE VIEWS IN SCHEMA GLOBAL_TEMPERATURES TO ROLE DEV;'%}
+{% do run_query(global_temperatures_privileges_table_query)  %}
+
+{% endif %}
+
 {% endfor %}
 
 
