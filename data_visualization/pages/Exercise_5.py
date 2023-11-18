@@ -73,16 +73,19 @@ if __name__ == '__main__':
     st.subheader('Exercise 5')
     year_to_plot = st.slider("Select a year", 1880, 2013, 2000,key='temperature_year')
 
-
     table_name = "EXERCISE_CO2_VS_TEMPERATURE.GLOBAL_TEMPERATURES.AGGREGATE_COUNTRY_TEMPERATURES"
     table = session.table(table_name)
     query = f"SELECT * FROM {table_name} WHERE year={year_to_plot}"
     data = session._run_query(query)
-    df = pd.DataFrame(data, columns=['year', 'averagetemperature', 'Country'])
+    df_temp = pd.DataFrame(data, columns=['YEAR', 'COUNTRY', 'AVERAGETEMPERATURE'])
+
+    df_temp['YEAR'] = df_temp['YEAR'].astype(str)
+    df_temp['COUNTRY'] = df_temp['COUNTRY'].astype(str)
+    df_temp['AVERAGETEMPERATURE'] = pd.to_numeric(df_temp['AVERAGETEMPERATURE'], errors='coerce').fillna(0).astype(int)
     tab1, tab2 = st.tabs(["🗃 Data","📈 Chart"])
     with tab1:
-        display_data_frame(df)
+        display_data_frame(df_temp)
     with tab2:
-        display_choropleth_map(df, "Country", "averagetemperature", [-10, 30], 'RdBu_r', f"Average Temperature in {year_to_plot}")
+        display_choropleth_map(df_temp, "COUNTRY", "AVERAGETEMPERATURE", [-10, 30], 'RdBu_r', f"Average Temperature in {year_to_plot}")
 
 
