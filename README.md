@@ -34,8 +34,13 @@ cd data_dynamos_exercise
 ## Setup Using Docker
 
 ### Prerequisites
-
-- Docker (Use colima for docker - https://github.com/abiosoft/colima)
+- Brew (Use homebrew for mac package manager - https://brew.sh/)
+- Docker (Use colima for docker - https://github.com/abiosoft/colima) 
+- Once Docker is installed, start the docker instance:
+```shell 
+colima start
+docker ps
+```
 
 ### Usage
 
