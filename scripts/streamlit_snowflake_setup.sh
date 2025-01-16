@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Exit immediately if a command exits with a non-zero status
 set -e
@@ -122,7 +122,7 @@ main() {
     determine_shell_rc
     install_pyenv
     configure_pyenv
-    #source "$shell_rc"
+    source "$shell_rc"
     install_python
     install_poetry
     configure_poetry
@@ -130,3 +130,12 @@ main() {
     install_dependencies
     echo 'Setup complete'
 }
+
+# Check if the script is being run with root privileges
+if [ "$EUID" -eq 0 ]; then
+    echo "Please do not run this script as root"
+    usage
+fi
+
+# Run the main function
+main
