@@ -35,7 +35,7 @@ cd data_dynamos_exercise
 
 ### Prerequisites
 
-- Docker
+- Docker (Use colima for docker - https://github.com/abiosoft/colima)
 
 ### Usage
 
@@ -72,11 +72,7 @@ docker run --rm -it -v $PWD:/opt/data_dynamos_exercise quay.io/data-dynamos/data
 - Run the code inside the container
 
 ```shell
-export SNOWFLAKE_ACCOUNT='<your-snowflake-account-name>'
-export SNOWFLAKE_DATABASE='<your-database-name>'
-export SNOWFLAKE_USER='<your-user-name>'
-export SNOWFLAKE_PASSWORD='<your-password>'
 
-cd data_visualization
-streamlit run DataDynamos.py # should be able to access the UI
+./scripts/stearmlit_snowflake_startup.sh
+
 ```
