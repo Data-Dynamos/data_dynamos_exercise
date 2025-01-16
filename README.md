@@ -28,7 +28,7 @@ cd data_dynamos_exercise
 
 ### To start streamlit instance - run
 ```shell
-./scripts/stearmlit_snowflake_startup.sh
+./scripts/streamlit_snowflake_startup.sh
 ```
 
 ## Setup Using Docker
@@ -78,6 +78,6 @@ docker run -p 8501:8501 --rm -it -v $PWD:/opt/data_dynamos_exercise quay.io/data
  
 ```shell
 
-./scripts/stearmlit_snowflake_startup.sh
+./scripts/streamlit_snowflake_startup.sh
 
 ```
