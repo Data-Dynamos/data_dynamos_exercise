@@ -10,7 +10,7 @@ def snowflake_session():
                                     "database": os.environ["SNOWFLAKE_DATABASE"],
                                     "user": os.environ["SNOWFLAKE_USER"],
                                     "password": os.environ["SNOWFLAKE_PASSWORD"],
-                                    "role": "DEVELOPER",
+                                    "role": "ACCOUNTADMIN",
                                     "warehouse": "COMPUTE_WH",
                                     "schema": "PSA",
                                     "client_session_keep_alive": True}).create()
