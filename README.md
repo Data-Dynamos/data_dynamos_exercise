@@ -22,8 +22,14 @@ cd data_dynamos_exercise
 ```
 
 ### Run the scripts for ontime setup
+Based on the shell you are using run one of the below scripts:
+For Bash : 
 ```shell
-./scripts/streamlit_snowflake_setup.sh  
+./scripts/streamlit_snowflake_bash_setup.sh  
+```
+For Zsh:
+```shell
+./scripts/streamlit_snowflake_zsh_setup.sh  
 ```
 
 ### To start streamlit instance - run
